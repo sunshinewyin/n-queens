@@ -146,10 +146,9 @@
       for (var i = 0; i<aBoard.length; i++) {
         if (this.hasColConflictAt(i) === true) {
           return true;
-         } else {
-          return false;
-         }
+        }
       }
+      return false;
     },
 
 /* Repl.it Pad
@@ -195,19 +194,41 @@ console.log(diag);
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       var aBoard = this.rows();
       var diagonal = [];
+      var sum = 0;
 
       for (var i = 0; i < aBoard.length; i++) {
-        if (majorDiagonalColumnIndexAtFirstRow=>0) {
-          diagonal.push(aBoard[i][majorDiagonalColumnIndexAtFirstRow + i]);
+        if (aBoard[majorDiagonalColumnIndexAtFirstRow + i === undefined]) {
+          diagonal.push(0);
+        } else {
+          diagonal.push(aBoard[i][i + majorDiagonalColumnIndexAtFirstRow]);
         }
       }
 
-      return false; // fixme
+      for (var k = 0; i < diagonal.length; k++ ) {
+        sum = sum + diagonal[k];
+      }
+
+      if (sum > 1) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var aBoard = this.rows();
+
+      for (var i = -aBoard.length+1; i<((aBoard.length*2)-1); i++) {
+        if (this.hasMajorDiagonalConflictAt(i) === true) {
+          return true;
+        }
+      }
+
+      return false;
+
+
+      // return false; // fixme
     },
 
 
