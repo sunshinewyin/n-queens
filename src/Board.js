@@ -152,13 +152,56 @@
       }
     },
 
+/* Repl.it Pad
+var arr = [
+            [1,1,0,0],
+            [2,0,0,0],
+            [3,1,1,0],
+            [4,0,0,0]
+          ];
 
+var diag = [];
+// diag.push(arr[i][0+0]);
+// diag.push(arr[i][0+1]);
+// diag.push(arr[i][0+2]);
+// diag.push(arr[0+3][0+3]);
+
+// console.log(diag);
+
+//diag.push(arr[-1+0][0+0]);
+//diag.push(arr[-1+1][0+1]);
+//diag.push(arr[-1+2][0+2]);
+//diag.push(arr[-1+3][0+3]);
+
+//console.log(diag);
+var indexThing = -2;
+
+for (var i = 0; i < arr.length; i++ ) {
+    if (arr[indexThing + i] === undefined) {
+        console.log('undefinedcatcher');
+        diag.push(0);
+        console.log('idxThing: ' + indexThing)
+       } else {
+        diag.push(arr[i][i + indexThing])
+    }
+}
+console.log(diag);
+ */
 
     // Major Diagonals - go from top-left to bottom-right
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      var aBoard = this.rows();
+      var diagonal = [];
+
+      for (var i = 0; i < aBoard.length; i++) {
+        if (majorDiagonalColumnIndexAtFirstRow=>0) {
+          diagonal.push(aBoard[i][majorDiagonalColumnIndexAtFirstRow + i]);
+        }
+      }
+
       return false; // fixme
     },
 
