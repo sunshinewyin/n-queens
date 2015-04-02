@@ -81,12 +81,12 @@
     hasRowConflictAt: function(rowIndex) {
 
       var aBoard = this.rows();
-        console.log('rowIndex.constructor: ' + rowIndex.constructor);
-        console.log('rowIndex:' + rowIndex);
+       // console.log('rowIndex.constructor: ' + rowIndex.constructor);
+        // console.log('rowIndex:' + rowIndex);
       var aRow = aBoard[rowIndex];
         console.log('aBoard[adx]: ' + aBoard[0])
       var sum = 0;
-        console.log('aRow: ' +aRow);
+        //console.log('aRow: ' +aRow);
       for (var i = 0; i<aRow.length; i++) {
         sum = sum + aRow[i];
       }
@@ -96,7 +96,7 @@
       } else {
         return false;
       }
-      // return false; // fixme
+      return false; // fixme
     },
 
     // test if any rows on this board contain conflicts
@@ -105,12 +105,11 @@
       console.log('aBlength :' + aBoard.length)
 
       for (var i = 0; i<aBoard.length; i++) {
-        if (this.hasRowConflictAt(aBoard[i]) === true) {
+        if (this.hasRowConflictAt(i) === true) {
           return true;
-        } else {
-          return false;
         }
       }
+      return false;
     },
 
 
@@ -121,13 +120,36 @@
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
       var aBoard = this.rows();
+      var column = [];
 
-      return false; // fixme
+      for (var i = 0; i < aBoard.length; i++) {
+        column.push(aBoard[i][colIndex]);
+      }
+
+      var sum = 0;
+
+      for (var k = 0; k < column.length; k++) {
+        sum = sum + column[k];
+      }
+
+      if (sum > 1) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var aBoard = this.rows();
+
+      for (var i = 0; i<aBoard.length; i++) {
+        if (this.hasColConflictAt(i) === true) {
+          return true;
+         } else {
+          return false;
+         }
+      }
     },
 
 
