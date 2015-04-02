@@ -197,14 +197,14 @@ console.log(diag);
       var sum = 0;
 
       for (var i = 0; i < aBoard.length; i++) {
-        if (aBoard[majorDiagonalColumnIndexAtFirstRow + i === undefined]) {
+        if (aBoard[majorDiagonalColumnIndexAtFirstRow + i] === undefined) {
           diagonal.push(0);
         } else {
           diagonal.push(aBoard[i][i + majorDiagonalColumnIndexAtFirstRow]);
         }
       }
 
-      for (var k = 0; i < diagonal.length; k++ ) {
+      for (var k = 0; k < diagonal.length; k++ ) {
         sum = sum + diagonal[k];
       }
 
